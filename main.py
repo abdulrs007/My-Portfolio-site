@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas
 
 st.set_page_config(layout="wide")
 
@@ -10,11 +11,12 @@ with col1:
 with col2:
     st.title("Abdulrasheed Shittu")
     content = """ 
-     Hi, I am a seasoned IT professional with over 8 years of experience in IT infrastructure and software development. 
-     My expertise spans designing, implementing, and managing robust IT systems, as well as developing innovative 
-     software solutions. With a strong passion for technology, I stay up-to-date with industry trends and advancements. 
+     Hi,I am Abdulrasheed, a seasoned IT professional with over 8 years of experience in IT infrastructure and software
+     development. My expertise spans designing, implementing, and managing robust IT systems, as well as developing 
+     innovative software solutions.
+     With a strong passion for technology, I stay up-to-date with industry trends and advancements. 
      Throughout my career, I have successfully delivered numerous projects, leveraging my technical skills to drive business
-      growth and improvement..
+     growth and improvement..
      """
     st.info(content)
 
@@ -22,4 +24,16 @@ content2 = """
 Below you can find some of the apps I have built in python. Feel free to contact me. 
 """
 st.write(content2)
+
+col3, col4 = st.columns(2)
+
+df = pandas.read_csv("data.csv", sep=";")
+
+with col3:
+    for index, row in df[:10].iterrows():
+        st.header(row["title"])
+
+with col4:
+    for index, row in df[10:].iterrows():
+        st.header(row["title"])
 
